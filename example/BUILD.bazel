@@ -1,0 +1,8 @@
+load("//tools:electron.bzl", "electron_app")
+
+electron_app(
+    name = "example",
+    app_name = "example-app",
+    index_html = "index.html",
+    main_js = "main.js",
+)

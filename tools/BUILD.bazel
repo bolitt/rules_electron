@@ -1,0 +1,18 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_binary", "go_library")
+
+package(default_visibility=["//visibility:private"])
+
+exports_files(["run.sh.tpl"])
+
+go_library(
+    name = "bundle_lib",
+    srcs = ["bundle.go"],
+    importpath = "github.com/grahamjenson/mymono/tools/electron",
+    visibility = ["//visibility:private"],
+)
+
+go_binary(
+    name = "bundle",
+    embed = [":bundle_lib"],
+    visibility = ["//visibility:public"],
+)
